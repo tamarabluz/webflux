@@ -2,4 +2,4 @@ spring:
   data:
     mongodb:
       uri: mongodb+srv://admin:<db_password>@werbfluxcluster.ux1kz.mongodb.net/webflux?retryWrites=true&w=majority&appName=WerbfluxCluster
-
+      auto-index-creation: true
