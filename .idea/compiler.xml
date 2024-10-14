@@ -2,8 +2,8 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel>
-      <module name="webflux.webflux.main~1" target="21" />
-      <module name="webflux.webflux.test~1" target="21" />
+      <module name="webflux.webflux.main" target="21" />
+      <module name="webflux.webflux.test" target="21" />
     </bytecodeTargetLevel>
   </component>
 </project>
