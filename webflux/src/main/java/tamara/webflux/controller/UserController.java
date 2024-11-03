@@ -1,5 +1,6 @@
 package tamara.webflux.controller;
 
+import jakarta.validation.Valid;
 import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,7 +12,7 @@ import tamara.webflux.model.response.UserResponse;
 public interface UserController {
 
     @PostMapping
-    ResponseEntity<Mono<Void>> save(@RequestBody UserRequest request);
+    ResponseEntity<Mono<Void>> save(@Valid @RequestBody UserRequest request);
 
     @GetMapping(value = "/{id}")
     RequestEntity<Mono<UserResponse>> find(@PathVariable String id);
