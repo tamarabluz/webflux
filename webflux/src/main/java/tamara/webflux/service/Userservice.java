@@ -7,6 +7,11 @@ import tamara.webflux.entity.User;
 import tamara.webflux.mapper.UserMapper;
 import tamara.webflux.model.request.UserRequest;
 import tamara.webflux.repository.UserRepository;
+import tamara.webflux.service.exception.ObjectNotFoundException;
+
+import java.text.Format;
+
+import static java.lang.String.format;
 
 @Service
 @RequiredArgsConstructor
@@ -20,6 +25,11 @@ public class Userservice {
     }
 
     public Mono<User> findById( final String id){
-        return repository.findById(id);
+        return repository.findById(id)
+                .switchIfEmpty(Mono.error(
+                        new ObjectNotFoundException(
+                                format("Object not found")
+                        )
+                ));
     }
 }
