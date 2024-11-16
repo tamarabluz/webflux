@@ -1,7 +1,6 @@
 package tamara.webflux.controller;
 
 import jakarta.validation.Valid;
-import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
@@ -21,7 +20,7 @@ public interface UserController {
     ResponseEntity<Flux<UserResponse>> findAll();
 
     @PatchMapping(value = "/{id}")
-    RequestEntity<Mono<UserResponse>> update (@PathVariable String id, @RequestBody UserRequest request);
+    ResponseEntity<Mono<UserResponse>> update (@PathVariable String id, @RequestBody UserRequest request);
 
     @DeleteMapping(value = "/{id}")
     ResponseEntity<Mono<Void>> delete (@PathVariable String id);

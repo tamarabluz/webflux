@@ -2,7 +2,6 @@ package tamara.webflux.controller.impl;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -43,8 +42,10 @@ public class UserControllerImpl implements UserController {
     }
 
     @Override
-    public RequestEntity<Mono<UserResponse>> update(String id, UserRequest request) {
-        return null;
+    public ResponseEntity<Mono<UserResponse>> update(String id, UserRequest request) {
+        return ResponseEntity.ok().body(
+                service.update(id, request).map(mapper::toResponse)
+        );
     }
 
     @Override
