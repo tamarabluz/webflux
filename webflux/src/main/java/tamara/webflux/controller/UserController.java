@@ -15,7 +15,7 @@ public interface UserController {
     ResponseEntity<Mono<Void>> save(@Valid @RequestBody UserRequest request);
 
     @GetMapping(value = "/{id}")
-    RequestEntity<Mono<UserResponse>> find(@PathVariable String id);
+    ResponseEntity<Mono<UserResponse>> findById(@PathVariable String id);
 
     @GetMapping
     RequestEntity<Flux<UserResponse>> findAll();

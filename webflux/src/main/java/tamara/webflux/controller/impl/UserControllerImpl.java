@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import tamara.webflux.controller.UserController;
+import tamara.webflux.mapper.UserMapper;
 import tamara.webflux.model.request.UserRequest;
 import tamara.webflux.model.response.UserResponse;
 import tamara.webflux.service.Userservice;
@@ -19,6 +20,7 @@ import tamara.webflux.service.Userservice;
 public class UserControllerImpl implements UserController {
 
     private final Userservice service;
+    private final UserMapper mapper;
 
     @Override
     public ResponseEntity<Mono<Void>> save(UserRequest request) {
@@ -27,8 +29,10 @@ public class UserControllerImpl implements UserController {
     }
 
     @Override
-    public RequestEntity<Mono<UserResponse>> find(String id) {
-        return null;
+    public ResponseEntity<Mono<UserResponse>> findById(String id) {
+        return ResponseEntity.ok().body(
+                service.findById(id).map(mapper::toResponse)
+        );
     }
 
     @Override
