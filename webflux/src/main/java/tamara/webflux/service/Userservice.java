@@ -2,6 +2,7 @@ package tamara.webflux.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import tamara.webflux.entity.User;
 import tamara.webflux.mapper.UserMapper;
@@ -31,5 +32,9 @@ public class Userservice {
                                 format("Object not found")
                         )
                 ));
+    }
+
+    public Flux<User> findll(){
+        return repository.findAll();
     }
 }
