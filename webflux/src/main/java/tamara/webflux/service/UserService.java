@@ -10,13 +10,11 @@ import tamara.webflux.model.request.UserRequest;
 import tamara.webflux.repository.UserRepository;
 import tamara.webflux.service.exception.ObjectNotFoundException;
 
-import java.text.Format;
-
 import static java.lang.String.format;
 
 @Service
 @RequiredArgsConstructor
-public class Userservice {
+public class UserService {
 
     private final UserRepository repository;
     private final UserMapper mapper;
@@ -29,7 +27,7 @@ public class Userservice {
         return handleNotFount(repository.findById(id), id);
     }
 
-    public Flux<User> findll(){
+    public Flux<User> findAll(){
         return repository.findAll();
     }
 

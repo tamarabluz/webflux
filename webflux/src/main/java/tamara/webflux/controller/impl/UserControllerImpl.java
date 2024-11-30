@@ -11,14 +11,14 @@ import tamara.webflux.controller.UserController;
 import tamara.webflux.mapper.UserMapper;
 import tamara.webflux.model.request.UserRequest;
 import tamara.webflux.model.response.UserResponse;
-import tamara.webflux.service.Userservice;
+import tamara.webflux.service.UserService;
 
 @RestController
 @RequestMapping(value = "/users")
 @RequiredArgsConstructor
 public class UserControllerImpl implements UserController {
 
-    private final Userservice service;
+    private final UserService service;
     private final UserMapper mapper;
 
     @Override
@@ -37,7 +37,7 @@ public class UserControllerImpl implements UserController {
     @Override
     public ResponseEntity<Flux<UserResponse>> findAll() {
         return ResponseEntity.ok().body(
-                service.findll().map(mapper::toResponse)
+                service.findAll().map(mapper::toResponse)
         );
     }
 
